@@ -1,88 +1,101 @@
-//Nav Bar Hamburger Icons
-document.addEventListener("DOMContentLoaded", function() {
+// ===== NAV HAMBURGER =====
+document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.getElementById("hamburger");
     const nav = document.getElementById("nav");
     const closeIcon = document.getElementById("close-icon");
-    const navLinks = document.querySelectorAll(".nav-links a"); 
+    const navLinks = document.querySelectorAll(".nav-links a");
 
-    hamburger.addEventListener("click", function() {
-        nav.classList.add("active");
-    });
+    hamburger.addEventListener("click", () => nav.classList.add("active"));
+    closeIcon.addEventListener("click", () => nav.classList.remove("active"));
+    navLinks.forEach(link => link.addEventListener("click", () => nav.classList.remove("active")));
 
-   
-    closeIcon.addEventListener("click", function() {
-        nav.classList.remove("active");
-    });
-
-    navLinks.forEach (link => {
-        link.addEventListener("click", function() {
-            nav.classList.remove("active"); 
+    // Active nav link highlight on scroll
+    const sections = document.querySelectorAll("section[id]");
+    window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+        sections.forEach(section => {
+            const top = section.offsetTop - 120;
+            const height = section.offsetHeight;
+            const id = section.getAttribute("id");
+            const link = document.querySelector('.nav-links a[href="#' + id + '"]');
+            if (link) {
+                if (scrollY >= top && scrollY < top + height) {
+                    navLinks.forEach(l => l.classList.remove("active"));
+                    link.classList.add("active");
+                }
+            }
         });
     });
 });
 
-
-//Type Writer Animation
-const texts = ["Developer", "UI/UX Designer", "Front-end Developer", "Back-end Developer", "IT-Student"];
-let index = 0;
-let charIndex = 0;
-let currentText = '';
-let isDeleting = false;
+// ===== TYPING ANIMATION =====
+const texts = ["Developer", "IT Student", "Front/Back end Developer", "Tech Enthusiast"];
+let index = 0, charIndex = 0, isDeleting = false;
 
 function type() {
     const span = document.querySelector('.typing-text span');
- 
-    currentText = texts[index];
-    
-   
-    if (!isDeleting && charIndex <= currentText.length) {
-        span.textContent = currentText.slice(0, charIndex++);
-    }
-    
- 
-    if (isDeleting && charIndex >= 0) {
-        span.textContent = currentText.slice(0, charIndex--);
-    }
-    
-
-    if (charIndex === currentText.length) {
+    if (!span) return;
+    const current = texts[index];
+    span.textContent = isDeleting ? current.slice(0, --charIndex) : current.slice(0, ++charIndex);
+    if (!isDeleting && charIndex === current.length) {
         isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        index = (index + 1) % texts.length; 
+        setTimeout(type, 1500);
+        return;
     }
-
-    const typingSpeed = isDeleting ? 100 : 200; 
-    setTimeout(type, typingSpeed);
+    if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        index = (index + 1) % texts.length;
+    }
+    setTimeout(type, isDeleting ? 80 : 150);
 }
-
-
 type();
 
-
-// dark mode
-document.addEventListener("DOMContentLoaded", function() {
-    const themeToggle = document.getElementById("theme-toggle");
+// ===== DARK / LIGHT MODE =====
+document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("theme-toggle");
     const body = document.body;
 
-    themeToggle.addEventListener("click", function() {
+    if (localStorage.getItem("theme") === "light") {
+        body.classList.add("light-mode");
+        toggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    }
+
+    toggle.addEventListener("click", () => {
         body.classList.toggle("light-mode");
-        const isLightMode = body.classList.contains("light-mode");
-        themeToggle.innerHTML = isLightMode 
-            ? '<i class="fa-solid fa-moon"></i>'
-            : '<i class="fa-solid fa-sun"></i>'; 
+        const isLight = body.classList.contains("light-mode");
+        toggle.innerHTML = isLight ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
+        localStorage.setItem("theme", isLight ? "light" : "dark");
     });
 });
 
-
-//skill bar
-window.addEventListener('load', () => {
-    const skillLevels = document.querySelectorAll('.skill-level');
-
-   
-    skillLevels.forEach(skill => {
-        const level = skill.getAttribute('data-level');
-        skill.style.width = `${level}%`;
-        skill.classList.add('active'); 
+// ===== SKILL BARS (Intersection Observer) =====
+const skillFills = document.querySelectorAll(".skill-fill");
+const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.width = entry.target.getAttribute("data-width") + "%";
+            skillObserver.unobserve(entry.target);
+        }
     });
+}, { threshold: 0.3 });
+skillFills.forEach(fill => skillObserver.observe(fill));
+
+// ===== SCROLL REVEAL =====
+const revealEls = document.querySelectorAll(
+    ".about-card, .skill-category, .project-card, .timeline-item"
+);
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+revealEls.forEach(el => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(30px)";
+    el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    revealObserver.observe(el);
 });
