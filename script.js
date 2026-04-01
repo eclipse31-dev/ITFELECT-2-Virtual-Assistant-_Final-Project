@@ -99,3 +99,27 @@ revealEls.forEach(el => {
     el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
     revealObserver.observe(el);
 });
+
+// ===== COLOR THEME PICKER =====
+document.addEventListener("DOMContentLoaded", function () {
+    const dots = document.querySelectorAll(".color-dot");
+    const savedColor = localStorage.getItem("colorTheme") || "cyan";
+
+    if (savedColor === "pink") {
+        document.body.classList.add("pink-theme");
+    }
+    dots.forEach(dot => {
+        if (dot.dataset.color === savedColor) dot.classList.add("active");
+        else dot.classList.remove("active");
+    });
+
+    dots.forEach(dot => {
+        dot.addEventListener("click", () => {
+            const color = dot.dataset.color;
+            document.body.classList.toggle("pink-theme", color === "pink");
+            dots.forEach(d => d.classList.remove("active"));
+            dot.classList.add("active");
+            localStorage.setItem("colorTheme", color);
+        });
+    });
+});
