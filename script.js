@@ -1,4 +1,4 @@
-// ===== NAV HAMBURGER =====
+//Nav 
 document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.getElementById("hamburger");
     const nav = document.getElementById("nav");
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// ===== TYPING ANIMATION =====
+// Typing Animation
 const texts = ["Developer", "IT Student", "Front/Back end Developer", "Tech Enthusiast"];
 let index = 0, charIndex = 0, isDeleting = false;
 
@@ -50,7 +50,7 @@ function type() {
 }
 type();
 
-// ===== DARK / LIGHT MODE =====
+// Dark/Light mode
 document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.getElementById("theme-toggle");
     const body = document.body;
