@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Typing Animation
-const texts = ["Developer", "IT Student", "Front/Back end Developer", "Tech Enthusiast"];
+const texts = ["Web-Developer", "UI-UX Designer", "IT Student", "Tech Enthusiast"];
 let index = 0, charIndex = 0, isDeleting = false;
 
 function type() {
