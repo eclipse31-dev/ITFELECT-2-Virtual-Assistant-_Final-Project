@@ -66,9 +66,8 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-span { color: var(--accent); }
-
-/* ===== HEADER ===== */
+/* accent spans — only heading/logo spans, not all spans */
+h1 span, h2 span, h3 span, .logo span, .typing-text span { color: var(--accent); }
 header {
     position: fixed;
     top: 0; left: 0;
@@ -425,6 +424,8 @@ section { padding: 10rem 9% 6rem; }
     color: var(--text);
 }
 
+.skill-info span { color: var(--text); }
+
 .skill-progress {
     height: 8px;
     background: rgba(255,255,255,0.08);
@@ -596,6 +597,21 @@ section { padding: 10rem 9% 6rem; }
     justify-content: center;
     font-size: 2.4rem;
     color: var(--accent);
+}
+
+.project-img {
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.project-img img {
+    width: 100%;
+    height: 18rem;
+    object-fit: cover;
+    display: block;
+    border-radius: 1rem;
 }
 
 .project-card h3 {
@@ -779,11 +795,11 @@ footer span { color: #e74c3c; }
     }
 
     .close-icon {
-        display: none;
         position: absolute;
         top: 2.5rem; right: 2.5rem;
         width: 3rem; height: 3rem;
         cursor: pointer;
+        display: none;
     }
 
     .close-icon::before, .close-icon::after {
@@ -820,3 +836,41 @@ footer span { color: #e74c3c; }
 
     footer { flex-direction: column; gap: 1.5rem; text-align: center; }
 }
+
+/* LIGHTBOX */
+.lightbox-trigger {
+    cursor: zoom-in;
+    transition: opacity 0.2s;
+}
+.lightbox-trigger:hover { opacity: 0.85; }
+
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+.lightbox.active { display: flex; }
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 88vh;
+    border-radius: 1rem;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 3rem;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    user-select: none;
+}
+.lightbox-close:hover { color: var(--accent); }

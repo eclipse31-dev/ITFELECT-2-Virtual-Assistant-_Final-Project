@@ -55,7 +55,7 @@
             </div>
             <div class="hero-btns">
                 <a href="#contact" class="btn">Hire Me</a>
-                <a href="Usa_Resume.pdf" class="btn btn-outline" download><i class="fa-solid fa-download"></i> Download CV</a>
+                <a href="resume/Usa_Resume.pdf" class="btn btn-outline" download><i class="fa-solid fa-download"></i> Download CV</a>
             </div>
         </div>
     </section>
@@ -288,7 +288,7 @@
         </div>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-cash-register"></i></div>
+                <div class="project-img"><img src="projects/comprog2.png" alt="POS System Screenshot" class="lightbox-trigger"></div>
                 <h3>POS System</h3>
                 <p>A Point-of-Sale system built in Java using NetBeans for Computer Programming 2. Features product management, transaction processing, and receipt generation.</p>
                 <div class="project-tags">
@@ -296,10 +296,11 @@
                     <span class="tag">NetBeans</span>
                     <span class="tag">OOP</span>
                 </div>
+                <a href="https://github.com/eclipse31-dev/ComputerProgramming2" class="project-link" target="_blank">View Repo <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="project-img"><img src="/projects/TinyLearn.png" alt="TinyLearn Screenshot" class="lightbox-trigger"></div>
                 <h3>TinyLearn</h3>
                 <p>A full-stack Learning Management System built with Laravel and React. Features real-time notifications via WebSockets, assignment submissions with file uploads, grading, course management, and role-based dashboards for students, teachers, and admins.</p>
                 <div class="project-tags">
@@ -311,7 +312,18 @@
                 <a href="https://github.com/eclipse31-dev/TinyLearn" class="project-link" target="_blank">View Repo <i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-satellite"></i></div>
+                <div class="project-icon"><i class="fa-solid fa-robot"></i></div>
+                <h3>Virtual Assistant</h3>
+                <p>A virtual assistant final project built for IT Elective 2. Designed to handle user queries and provide intelligent responses through a conversational interface.</p>
+                <div class="project-tags">
+                    <span class="tag">Virtual Assistant</span>
+                    <span class="tag">IT Elective 2</span>
+                    <span class="tag">Final Project</span>
+                </div>
+                <a href="https://github.com/eclipse31-dev/ITFELECT-2-Virtual-Assistant-_Final-Project" class="project-link" target="_blank">View Repo <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="project-card">
+                <div class="project-img"><img src="Orbit.png" alt="ORBIT Screenshot" class="lightbox-trigger"></div>
                 <h3>ORBIT</h3>
                 <p>A facility booking system developed and deployed at the UIC Library LRSC (Learning Resource Center). Allows users to reserve library facilities online, streamlining the booking process for students and staff at the University of the Immaculate Conception.</p>
                 <div class="project-tags">
@@ -350,7 +362,7 @@
                     <a href="https://github.com/eclipse31-dev" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
                     <a href="https://www.instagram.com/si_kenusa/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 </div>
-                <a href="Usa_Resume.pdf" class="btn" download style="margin-top:2rem; display:inline-block;">
+                <a href="resume/Usa_Resume.pdf" class="btn" download style="margin-top:2rem; display:inline-block;">
                     <i class="fa-solid fa-file-pdf"></i> Download Resume
                 </a>
             </div>
@@ -374,6 +386,12 @@
         <p>© 2025 Ken Andrei Usa.</p>
         <a href="#home" class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></a>
     </footer>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+        <span class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</span>
+        <img id="lightbox-img" src="" alt="Project Preview">
+    </div>
 
     <script src="script.js"></script>
 </body>
