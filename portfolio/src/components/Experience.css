@@ -1,0 +1,12 @@
+.experience-section { background: var(--bg2); }
+.timeline { max-width: 800px; margin: 0 auto; position: relative; padding-left: 3rem; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: linear-gradient(to bottom, var(--accent), transparent); }
+.timeline-item { position: relative; margin-bottom: 4rem; padding-left: 3rem; }
+.timeline-dot { position: absolute; left: -3.9rem; top: 0.5rem; width: 1.6rem; height: 1.6rem; background: var(--accent); border-radius: 50%; border: 3px solid var(--bg2); box-shadow: 0 0 10px var(--glow-5); }
+.timeline-content { background: var(--card-bg); border: 1px solid var(--border); border-radius: 1.2rem; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; }
+.timeline-content:hover { transform: translateX(6px); box-shadow: 0 8px 30px var(--glow-3); }
+.timeline-date { font-size: 1.2rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1rem; }
+.timeline-content h3 { font-size: 1.9rem; font-weight: 700; color: var(--text); margin: 0.5rem 0 0.3rem; }
+.timeline-content h4 { font-size: 1.4rem; color: var(--accent); font-weight: 500; margin-bottom: 1rem; }
+.timeline-content p { font-size: 1.4rem; color: var(--text-muted); line-height: 1.8; }
+@media (max-width: 768px) { .timeline { padding-left: 2rem; } .timeline-dot { left: -2.9rem; } }

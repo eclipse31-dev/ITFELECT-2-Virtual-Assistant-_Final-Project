@@ -1,0 +1,4 @@
+footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2.5rem 9%; display: flex; justify-content: space-between; align-items: center; font-size: 1.4rem; color: var(--text-muted); }
+.back-to-top { display: inline-flex; align-items: center; justify-content: center; width: 4rem; height: 4rem; background: var(--accent); color: #fff; border-radius: 50%; font-size: 1.6rem; transition: 0.3s; }
+.back-to-top:hover { background: var(--accent-dark); transform: translateY(-3px); }
+@media (max-width: 768px) { footer { flex-direction: column; gap: 1.5rem; text-align: center; } }

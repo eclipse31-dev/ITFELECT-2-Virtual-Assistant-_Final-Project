@@ -1,0 +1,5 @@
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9999; align-items: center; justify-content: center; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 88vh; border-radius: 1rem; box-shadow: 0 0 40px rgba(0,0,0,0.6); object-fit: contain; }
+.lightbox-close { position: absolute; top: 1.5rem; right: 2rem; font-size: 3rem; color: #fff; cursor: pointer; line-height: 1; user-select: none; }
+.lightbox-close:hover { color: var(--accent); }
