@@ -1,4 +1,4 @@
-.about-section { background: var(--bg2); }
+.about-section { background: transparent; }
 .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
 .about-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 1.5rem; padding: 3rem; transition: transform 0.3s, box-shadow 0.3s; opacity: 0; transform: translateY(30px); }
 .about-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }

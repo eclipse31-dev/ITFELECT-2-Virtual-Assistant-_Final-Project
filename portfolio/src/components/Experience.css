@@ -1,4 +1,4 @@
-.experience-section { background: var(--bg2); }
+.experience-section { background: transparent; }
 .timeline { max-width: 800px; margin: 0 auto; position: relative; padding-left: 3rem; }
 .timeline::before { content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: linear-gradient(to bottom, var(--accent), transparent); }
 .timeline-item { position: relative; margin-bottom: 4rem; padding-left: 3rem; }

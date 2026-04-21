@@ -1,4 +1,4 @@
-.contact-section { background: var(--bg2); }
+.contact-section { background: transparent; }
 .contact-wrapper { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; max-width: 1000px; margin: 0 auto; }
 .contact-info h3 { font-size: 2.5rem; font-weight: 700; color: var(--text); margin-bottom: 1.2rem; }
 .contact-info > p { font-size: 1.5rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 2.5rem; }

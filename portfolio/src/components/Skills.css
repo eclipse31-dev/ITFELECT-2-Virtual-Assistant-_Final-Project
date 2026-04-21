@@ -1,4 +1,4 @@
-.skills-section { background: var(--bg); }
+.skills-section { background: transparent; }
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
 .skill-category { background: var(--card-bg); border: 1px solid var(--border); border-radius: 1.5rem; padding: 3rem; transition: transform 0.3s, box-shadow 0.3s; }
 .skill-category:hover { transform: translateY(-5px); box-shadow: 0 10px 35px var(--glow-3); }
