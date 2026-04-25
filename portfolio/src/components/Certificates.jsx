@@ -30,13 +30,21 @@ export default function Certificates() {
   const ref = useRef(null)
 
   useEffect(() => {
+    const cards = ref.current?.querySelectorAll('.cert-card')
+    if (!cards) return
+
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) }
+        if (e.isIntersecting) {
+          e.target.classList.add('visible')
+          obs.unobserve(e.target)
+        }
       })
-    }, { threshold: 0.1 })
-    ref.current?.querySelectorAll('.cert-card').forEach(el => obs.observe(el))
-    return () => obs.disconnect()
+    }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' })
+
+    // Small delay to ensure DOM is painted
+    const t = setTimeout(() => cards.forEach(el => obs.observe(el)), 100)
+    return () => { clearTimeout(t); obs.disconnect() }
   }, [])
 
   return (
