@@ -3,30 +3,37 @@ import './Certificates.css'
 
 const certs = [
   {
+    img: '/certificate/PSITS_ESPORTS TECHNICAL DERICTOR.png',
+    title: 'PSITS Festival of Talents 2025',
+    issuer: 'PSITS Region XI - University of Immaculate Conception',
+    date: 'March 16, 2025',
+    desc: 'Certificate of Appreciation awarded for contributions as the Esports Technical Director for the Philippine Society of Information Technology Students (PSITS) Region XI during the "Festival of Talents 2025." Theme: "Future Ready ITE: Shaping the Digital Future of IT Students in Davao Region."',
+  },
+  {
+    img: '/certificate/Certificate of E-Toolkit_ Emerging Educational Technology Tools_page-0001.jpg',
+    title: 'E-Toolkit: Emerging Educational Technology Tools',
+    issuer: 'University of Southeastern Philippines - EL 229 Instructor',
+    date: 'February 26, 2026',
+    desc: 'Certificate of Participation given for joining and actively participating in the online event titled "E-Toolkit: Emerging Educational Technology Tools," organized by the University of Southeastern Philippines and held virtually via Microsoft Teams.',
+  },
+  {
     img: '/certificate/Certificate of Participation.png',
-    title: 'Certificate of Participation',
-    issuer: 'University of the Immaculate Conception',
-    date: '2024',
-    desc: 'Awarded for active participation in a university-organized seminar or event, demonstrating commitment to continuous learning and professional development.',
+    title: 'VIBE Workshop for Basic Video Editing',
+    issuer: 'VIBE Club - UIC Father Selga Campus',
+    date: 'April 20, 2024',
+    desc: 'Certificate of Appreciation presented as a VIBE Officer for cooperation and contributions toward the success of the "Workshop/Seminar for Basic Video Editing using Adobe Premiere Pro" at ITRC Training Center, University of the Immaculate Conception - Father Selga Campus.',
   },
   {
     img: '/certificate/Certificate_Ken Andrei Usa.png',
-    title: 'E-Toolkit: Emerging Educational Technology Tools',
-    issuer: 'UIC — Workshop / Seminar',
-    date: '2024',
-    desc: 'Completed a workshop on emerging educational technology tools, gaining hands-on experience with modern digital tools used in education and e-learning environments.',
-  },
-  {
-    img: '/certificate/PSITS_ESPORTS TECHNICAL DERICTOR.png',
-    title: 'PSITS Esports Technical Director',
-    issuer: 'PSITS Region 11',
-    date: '2023 – Present',
-    desc: 'Recognized as the official Esports Technical Director of PSITS Region 11, overseeing live stream production, tournament operations, and broadcast quality for regional IT student competitions.',
+    title: 'Git and GitHub Workshop',
+    issuer: 'Google Developer Groups (GDG) On Campus - UIC',
+    date: 'October 23, 2024',
+    desc: 'Certificate of Participation awarded in recognition of valuable contribution and active engagement as a participant in the "Git and GitHub Workshop: Version Control 101."',
   },
 ]
 
 export default function Certificates() {
-  const [active, setActive] = useState(null)
+  const [flipped, setFlipped] = useState(null)
   const ref = useRef(null)
 
   useEffect(() => {
@@ -45,31 +52,38 @@ export default function Certificates() {
     <section id="certificates" className="certificates-section">
       <div className="section-title">
         <h2>My <span>Certificates</span></h2>
-        <p className="section-sub">Click a certificate to see details</p>
+        <p className="section-sub">Click a certificate to flip and see details</p>
       </div>
       <div className="certs-grid" ref={ref}>
         {certs.map((c, i) => (
           <div
-            className={`cert-card reveal ${active === i ? 'expanded' : ''}`}
+            className={`cert-card-container reveal ${flipped === i ? 'flipped' : ''}`}
             key={c.title}
-            onClick={() => setActive(active === i ? null : i)}
+            onClick={() => setFlipped(flipped === i ? null : i)}
           >
-            <img src={c.img} alt={c.title} className="cert-img" />
-            <div className="cert-overlay-info">
-              <i className="fa-solid fa-certificate" />
-              <h3>{c.title}</h3>
-              <div className="cert-meta">
-                <span><i className="fa-solid fa-building-columns" /> {c.issuer}</span>
-                <span><i className="fa-solid fa-calendar" /> {c.date}</span>
+            <div className="cert-card">
+              {/* Front Side */}
+              <div className="cert-front">
+                <img src={c.img} alt={c.title} className="cert-img" />
+                <div className="cert-click-hint">
+                  <i className="fa-solid fa-circle-info" /> Click to flip
+                </div>
               </div>
-              <p>{c.desc}</p>
-              <span className="cert-close-hint"><i className="fa-solid fa-chevron-down" /> Click to close</span>
+              
+              {/* Back Side */}
+              <div className="cert-back">
+                <div className="cert-back-content">
+                  <i className="fa-solid fa-certificate" />
+                  <h3>{c.title}</h3>
+                  <div className="cert-meta">
+                    <span><i className="fa-solid fa-building-columns" /> {c.issuer}</span>
+                    <span><i className="fa-solid fa-calendar" /> {c.date}</span>
+                  </div>
+                  <p>{c.desc}</p>
+                  <span className="cert-close-hint"><i className="fa-solid fa-rotate-left" /> Click to flip back</span>
+                </div>
+              </div>
             </div>
-            {active !== i && (
-              <div className="cert-click-hint">
-                <i className="fa-solid fa-circle-info" /> Click for details
-              </div>
-            )}
           </div>
         ))}
       </div>
