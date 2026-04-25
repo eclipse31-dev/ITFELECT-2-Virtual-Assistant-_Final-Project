@@ -41,16 +41,32 @@ export default function Hero() {
         <p className="greeting">Hello, I'm</p>
         <h1>Ken Andrei <span>Usa</span></h1>
         <h3 className="typing-text">I'm a <span ref={spanRef}></span></h3>
-        <p className="hero-desc">A technically skilled web developer experienced in OBS Studio for live streaming and content production, with a strong background in building responsive web applications and optimizing multimedia integration for smooth, user-focused solutions.</p>
+        <p className="hero-desc">
+          A passionate web developer and tech enthusiast specializing in creating responsive, 
+          user-focused web applications. Experienced in live streaming production with OBS Studio 
+          and multimedia integration, bringing creative solutions to life.
+        </p>
         <div className="social-icons">
-          <a href="https://www.facebook.com/kenandrei.duran" target="_blank" rel="noreferrer" aria-label="Facebook"><i className="fa-brands fa-facebook" /></a>
-          <a href="https://github.com/eclipse31-dev" target="_blank" rel="noreferrer" aria-label="GitHub"><i className="fa-brands fa-github" /></a>
-          <a href="https://www.linkedin.com/in/ken-d-usa-9a4561327/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i className="fa-brands fa-linkedin" /></a>
-          <a href="https://www.instagram.com/si_kenusa/" target="_blank" rel="noreferrer" aria-label="Instagram"><i className="fa-brands fa-instagram" /></a>
+          <a href="https://www.facebook.com/kenandrei.duran" target="_blank" rel="noreferrer" aria-label="Facebook">
+            <i className="fa-brands fa-facebook" />
+          </a>
+          <a href="https://github.com/eclipse31-dev" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <i className="fa-brands fa-github" />
+          </a>
+          <a href="https://www.linkedin.com/in/ken-d-usa-9a4561327/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <i className="fa-brands fa-linkedin" />
+          </a>
+          <a href="https://www.instagram.com/si_kenusa/" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <i className="fa-brands fa-instagram" />
+          </a>
         </div>
         <div className="hero-btns">
-          <a href="#contact" className="btn">Hire Me</a>
-          <a href="/resume/Usa_Resume.pdf" className="btn btn-outline" download><i className="fa-solid fa-download" /> Download CV</a>
+          <a href="#contact" className="btn">
+            <i className="fa-solid fa-envelope" /> Let's Talk
+          </a>
+          <a href="/resume/Usa_Resume.pdf" className="btn btn-outline" download>
+            <i className="fa-solid fa-download" /> Download CV
+          </a>
         </div>
       </div>
     </section>

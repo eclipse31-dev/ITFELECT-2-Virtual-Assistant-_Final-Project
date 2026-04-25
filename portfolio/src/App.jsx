@@ -52,10 +52,23 @@ function App() {
       {welcome && (
         <div className={`welcome-overlay ${!welcome ? 'fade-out' : ''}`}>
           <div className="welcome-content">
+            <div className="welcome-icon">
+              <i className="fa-solid fa-code"></i>
+            </div>
             <p className="welcome-greeting">Welcome to my Portfolio</p>
             <h1>Ken Andrei <span>Usa</span></h1>
             <p className="welcome-sub">Web Developer · IT Student · Esports Tech Director</p>
-            <div className="welcome-loader"><div className="loader-bar" /></div>
+            <div className="welcome-loader">
+              <div className="loader-bar" />
+            </div>
+            <p className="welcome-hint">Loading experience...</p>
+          </div>
+          <div className="welcome-particles">
+            <div className="particle"></div>
+            <div className="particle"></div>
+            <div className="particle"></div>
+            <div className="particle"></div>
+            <div className="particle"></div>
           </div>
         </div>
       )}
