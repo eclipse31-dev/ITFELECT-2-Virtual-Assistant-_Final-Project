@@ -2,42 +2,64 @@
 
 .certs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2.5rem;
 }
 
+/* Reveal animation */
 .cert-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 1.5rem;
-  overflow: hidden;
-  cursor: default;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
   opacity: 0;
   transform: translateY(40px);
+  height: 26rem;
+  perspective: 1200px;
+  cursor: pointer;
 }
 
 .cert-card.visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s, border-color 0.3s;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.cert-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 45px var(--glow-4);
-  border-color: var(--accent);
-}
-
-.cert-img {
+/* 3D flip container */
+.cert-inner {
   position: relative;
   width: 100%;
-  height: 20rem;
-  overflow: hidden;
-  cursor: zoom-in;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  border-radius: 1.5rem;
 }
 
-.cert-img img {
+.cert-card.flipped .cert-inner {
+  transform: rotateY(180deg);
+}
+
+/* Shared face styles */
+.cert-front,
+.cert-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.cert-card:hover .cert-front,
+.cert-card:hover .cert-back {
+  border-color: var(--accent);
+  box-shadow: 0 15px 45px var(--glow-4);
+}
+
+/* FRONT */
+.cert-front {
+  background: var(--card-bg);
+}
+
+.cert-front img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -45,31 +67,47 @@
   transition: transform 0.4s;
 }
 
-.cert-card:hover .cert-img img { transform: scale(1.05); }
+.cert-card:hover .cert-front img { transform: scale(1.03); }
 
-.cert-overlay {
+.cert-hint {
   position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
+  bottom: 0;
+  left: 0; right: 0;
+  padding: 1rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.75));
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.6rem;
   opacity: 0;
   transition: opacity 0.3s;
-  font-size: 3rem;
-  color: #fff;
 }
 
-.cert-img:hover .cert-overlay { opacity: 1; }
+.cert-card:hover .cert-hint { opacity: 1; }
 
-.cert-body {
-  padding: 2rem 2.2rem;
+/* BACK */
+.cert-back {
+  background: var(--card-bg);
+  transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2.5rem;
+  text-align: center;
 }
 
-.cert-title {
+.cert-back-icon {
+  font-size: 3rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.cert-back h3 {
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--text);
@@ -79,7 +117,8 @@
 .cert-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: center;
+  gap: 0.8rem;
 }
 
 .cert-meta span {
@@ -91,13 +130,30 @@
   gap: 0.4rem;
 }
 
-.cert-desc {
-  font-size: 1.35rem;
+.cert-back p {
+  font-size: 1.3rem;
   color: var(--text-muted);
   line-height: 1.7;
 }
 
+.cert-close {
+  margin-top: 0.5rem;
+  background: var(--glow-6);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.6rem 1.6rem;
+  border-radius: 5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s;
+}
+
+.cert-close:hover { background: var(--accent); color: #fff; }
+
 @media (max-width: 768px) {
   .certs-grid { grid-template-columns: 1fr; }
-  .cert-img { height: 16rem; }
+  .cert-card { height: 22rem; }
 }

@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import Lightbox from './Lightbox'
 import './Certificates.css'
 
 const certs = [
@@ -27,16 +26,13 @@ const certs = [
 ]
 
 export default function Certificates() {
-  const [lightboxSrc, setLightboxSrc] = useState(null)
+  const [flipped, setFlipped] = useState(null)
   const ref = useRef(null)
 
   useEffect(() => {
     const obs = new IntersectionObserver(entries => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 150)
-          obs.unobserve(e.target)
-        }
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) }
       })
     }, { threshold: 0.1 })
     ref.current?.querySelectorAll('.cert-card').forEach(el => obs.observe(el))
@@ -47,27 +43,38 @@ export default function Certificates() {
     <section id="certificates" className="certificates-section">
       <div className="section-title">
         <h2>My <span>Certificates</span></h2>
-        <p className="section-sub">Achievements & recognitions</p>
+        <p className="section-sub">Click a certificate to see details</p>
       </div>
       <div className="certs-grid" ref={ref}>
-        {certs.map((c) => (
-          <div className="cert-card reveal" key={c.title}>
-            <div className="cert-img" onClick={() => setLightboxSrc(c.img)}>
-              <img src={c.img} alt={c.title} />
-              <div className="cert-overlay"><i className="fa-solid fa-magnifying-glass-plus" /></div>
-            </div>
-            <div className="cert-body">
-              <h3 className="cert-title">{c.title}</h3>
-              <div className="cert-meta">
-                <span><i className="fa-solid fa-building-columns" /> {c.issuer}</span>
-                <span><i className="fa-solid fa-calendar" /> {c.date}</span>
+        {certs.map((c, i) => (
+          <div
+            className={`cert-card reveal ${flipped === i ? 'flipped' : ''}`}
+            key={c.title}
+            onClick={() => setFlipped(flipped === i ? null : i)}
+          >
+            <div className="cert-inner">
+              {/* FRONT — full image */}
+              <div className="cert-front">
+                <img src={c.img} alt={c.title} />
+                <div className="cert-hint"><i className="fa-solid fa-rotate" /> Click to see details</div>
               </div>
-              <p className="cert-desc">{c.desc}</p>
+              {/* BACK — description */}
+              <div className="cert-back">
+                <i className="fa-solid fa-certificate cert-back-icon" />
+                <h3>{c.title}</h3>
+                <div className="cert-meta">
+                  <span><i className="fa-solid fa-building-columns" /> {c.issuer}</span>
+                  <span><i className="fa-solid fa-calendar" /> {c.date}</span>
+                </div>
+                <p>{c.desc}</p>
+                <button className="cert-close">
+                  <i className="fa-solid fa-rotate-left" /> Flip back
+                </button>
+              </div>
             </div>
           </div>
         ))}
       </div>
-      {lightboxSrc && <Lightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />}
     </section>
   )
 }
