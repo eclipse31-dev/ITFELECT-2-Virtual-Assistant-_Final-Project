@@ -5,6 +5,7 @@ import About from './components/About'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
+import Certificates from './components/Certificates'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Lightbox from './components/Lightbox'
@@ -29,6 +30,7 @@ function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark')
   const [color, setColor] = useState(() => localStorage.getItem('colorTheme') || 'cyan')
   const [lightboxSrc, setLightboxSrc] = useState(null)
+  const [welcome, setWelcome] = useState(true)
 
   useEffect(() => {
     document.body.className = [
@@ -39,8 +41,25 @@ function App() {
     localStorage.setItem('colorTheme', color)
   }, [theme, color])
 
+  useEffect(() => {
+    const t = setTimeout(() => setWelcome(false), 3000)
+    return () => clearTimeout(t)
+  }, [])
+
   return (
     <>
+      {/* Welcome overlay */}
+      {welcome && (
+        <div className={`welcome-overlay ${!welcome ? 'fade-out' : ''}`}>
+          <div className="welcome-content">
+            <p className="welcome-greeting">Welcome to my Portfolio</p>
+            <h1>Ken Andrei <span>Usa</span></h1>
+            <p className="welcome-sub">Web Developer · IT Student · Esports Tech Director</p>
+            <div className="welcome-loader"><div className="loader-bar" /></div>
+          </div>
+        </div>
+      )}
+
       {/* Global floating tech stack background */}
       <div className="tech-bg-global" aria-hidden="true">
         {techIcons.map((t, i) => (
@@ -57,6 +76,7 @@ function App() {
       <Skills />
       <Experience />
       <Projects onImageClick={setLightboxSrc} />
+      <Certificates />
       <Contact />
       <Footer />
       {lightboxSrc && <Lightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './Header.css'
 
-const navItems = ['home','about','skills','experience','projects','contact']
+const navItems = ['home','about','skills','experience','projects','certificates','contact']
 
 export default function Header({ theme, setTheme, color, setColor }) {
   const [menuOpen, setMenuOpen] = useState(false)

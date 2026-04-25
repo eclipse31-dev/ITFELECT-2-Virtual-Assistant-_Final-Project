@@ -56,3 +56,78 @@
   .tech-float span { font-size: 0.8rem; }
   .tech-float { opacity: 0.22; gap: 0.3rem; }
 }
+
+/* Welcome overlay */
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg, #0d0d0d);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: welcomeFade 0.6s ease 2.4s forwards;
+}
+
+@keyframes welcomeFade {
+  to { opacity: 0; pointer-events: none; }
+}
+
+.welcome-content {
+  text-align: center;
+  animation: welcomeIn 0.8s ease forwards;
+}
+
+@keyframes welcomeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.welcome-greeting {
+  font-size: 1.6rem;
+  color: var(--accent, #00bcd4);
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.welcome-content h1 {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #e0e0e0;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1rem;
+}
+
+.welcome-content h1 span {
+  color: var(--accent, #00bcd4);
+}
+
+.welcome-sub {
+  font-size: 1.5rem;
+  color: #888;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 3rem;
+}
+
+.welcome-loader {
+  width: 200px;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.loader-bar {
+  height: 100%;
+  background: var(--accent, #00bcd4);
+  border-radius: 10px;
+  animation: loadBar 2.2s ease forwards;
+}
+
+@keyframes loadBar {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
