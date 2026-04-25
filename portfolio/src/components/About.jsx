@@ -44,7 +44,7 @@ export default function About() {
           <div className="about-card-icon"><i className="fa-solid fa-trophy" /></div>
           <h3>Key Achievements</h3>
           <div className="achievements-grid">
-            {['Completed multiple web development projects as part of coursework','Serving as Esports Technical Director of PSITS Region 11 since 2023','Developed a functional POS System in Computer Programming 2'].map((t,i) => (
+            {['Completed multiple web development projects as part of coursework','Serving as Esports Technical Director of PSITS Region 11 since 2023','Developed a Barangay Information System for all voters in Computer Programming 2'].map((t,i) => (
               <div className="achievement-item" key={i}><i className="fa-solid fa-star" /><p>{t}</p></div>
             ))}
           </div>

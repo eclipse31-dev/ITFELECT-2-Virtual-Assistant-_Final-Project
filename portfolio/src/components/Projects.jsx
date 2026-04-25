@@ -1,7 +1,7 @@
 import './Projects.css'
 
 const projects = [
-  { img: '/projects/comprog2.png', title: 'POS System', desc: 'A Point-of-Sale system built in Java using NetBeans for Computer Programming 2. Features product management, transaction processing, and receipt generation.', tags: ['Java','NetBeans','OOP'], link: 'https://github.com/eclipse31-dev/ComputerProgramming2' },
+  { img: '/projects/comprog2.png', title: 'Barangay Information System', desc: 'A Barangay Information System for all voters built in Java using NetBeans for Computer Programming 2. Features voter records management, information processing, and report generation.', tags: ['Java','NetBeans','OOP'], link: 'https://github.com/eclipse31-dev/ComputerProgramming2' },
   { img: '/projects/TinyLearn.png', title: 'TinyLearn', desc: 'A full-stack Learning Management System built with Laravel and React. Features real-time notifications via WebSockets, assignment submissions, grading, and role-based dashboards.', tags: ['Laravel','React','WebSockets','SQLite'], link: 'https://github.com/eclipse31-dev/TinyLearn' },
   { img: '/projects/Orbit.png', title: 'ORBIT', desc: 'A facility booking system developed and deployed at the UIC Library LRSC. Allows users to reserve library facilities online for students and staff at UIC.', tags: ['Booking System','Deployed','UIC Library'], link: 'https://github.com/james-hub21/ORBIT' },
 ]
