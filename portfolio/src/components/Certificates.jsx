@@ -26,23 +26,17 @@ const certs = [
 ]
 
 export default function Certificates() {
-  const [flipped, setFlipped] = useState(null)
+  const [active, setActive] = useState(null)
   const ref = useRef(null)
 
   useEffect(() => {
     const cards = ref.current?.querySelectorAll('.cert-card')
     if (!cards) return
-
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible')
-          obs.unobserve(e.target)
-        }
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target) }
       })
     }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' })
-
-    // Small delay to ensure DOM is painted
     const t = setTimeout(() => cards.forEach(el => obs.observe(el)), 100)
     return () => { clearTimeout(t); obs.disconnect() }
   }, [])
@@ -56,30 +50,26 @@ export default function Certificates() {
       <div className="certs-grid" ref={ref}>
         {certs.map((c, i) => (
           <div
-            className={`cert-card reveal ${flipped === i ? 'flipped' : ''}`}
+            className={`cert-card reveal ${active === i ? 'expanded' : ''}`}
             key={c.title}
-            onClick={() => setFlipped(flipped === i ? null : i)}
+            onClick={() => setActive(active === i ? null : i)}
           >
-            <div className="cert-inner">
-              {/* FRONT — full image */}
-              <div className="cert-front">
-                <img src={c.img} alt={c.title} />
-                <div className="cert-hint"><i className="fa-solid fa-rotate" /> Click to see details</div>
+            <img src={c.img} alt={c.title} className="cert-img" />
+            <div className="cert-overlay-info">
+              <i className="fa-solid fa-certificate" />
+              <h3>{c.title}</h3>
+              <div className="cert-meta">
+                <span><i className="fa-solid fa-building-columns" /> {c.issuer}</span>
+                <span><i className="fa-solid fa-calendar" /> {c.date}</span>
               </div>
-              {/* BACK — description */}
-              <div className="cert-back">
-                <i className="fa-solid fa-certificate cert-back-icon" />
-                <h3>{c.title}</h3>
-                <div className="cert-meta">
-                  <span><i className="fa-solid fa-building-columns" /> {c.issuer}</span>
-                  <span><i className="fa-solid fa-calendar" /> {c.date}</span>
-                </div>
-                <p>{c.desc}</p>
-                <button className="cert-close">
-                  <i className="fa-solid fa-rotate-left" /> Flip back
-                </button>
-              </div>
+              <p>{c.desc}</p>
+              <span className="cert-close-hint"><i className="fa-solid fa-chevron-down" /> Click to close</span>
             </div>
+            {active !== i && (
+              <div className="cert-click-hint">
+                <i className="fa-solid fa-circle-info" /> Click for details
+              </div>
+            )}
           </div>
         ))}
       </div>
