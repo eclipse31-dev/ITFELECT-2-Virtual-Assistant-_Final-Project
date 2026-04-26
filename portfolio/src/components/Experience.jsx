@@ -1,8 +1,6 @@
 import './Experience.css'
 
 const items = [
-  { date: '2023 – Present', title: 'BSIT Student', org: 'University of the Immaculate Conception', desc: 'Actively studying core IT subjects including programming, web development, networking, and database management.' },
-  { date: '2021 – 2023', title: 'Senior High School Graduate – ABM Strand', org: 'UIC Basic Education Dept., Bajada Campus', desc: 'Graduated under the ABM strand. Gained strong foundations in business principles, financial literacy, and organizational management.' },
   { date: '2023 – Present', title: 'Esports Technical Director', org: 'PSITS Region 11 (Philippine Society of IT Students)', desc: 'Overseeing technical operations of competitive tournaments across Dota 2, Valorant, CS2, Mobile Legends, and Call of Duty Mobile. Managing live stream production using OBS Studio.' },
   { date: 'Ongoing', title: 'Technical Event Support (Volunteer)', org: 'University Events & Workshops', desc: 'Provide technical support for university events — setting up projectors, microphones, audio-visual equipment, and troubleshooting on-site technical issues.' },
 ]
