@@ -20,8 +20,8 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 
 .color-picker { display: flex; align-items: center; gap: 0.6rem; }
 .color-dot { width: 1.6rem; height: 1.6rem; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: transform 0.2s, border-color 0.2s; }
-.color-dot.cyan { background: #00bcd4; }
-.color-dot.pink { background: #f06292; }
+.color-dot.cyan { background: #00e5ff; }
+.color-dot.pink { background: #ff4d8d; }
 .color-dot.active { border-color: var(--text); transform: scale(1.2); }
 .color-dot:hover { transform: scale(1.15); }
 

@@ -9,53 +9,53 @@
 }
 
 :root {
-  --accent: #00bcd4;
-  --accent-dark: #0097a7;
-  --bg: #0d0d0d;
-  --bg2: #161616;
-  --bg3: #1e1e1e;
-  --text: #e0e0e0;
-  --text-muted: #888;
-  --card-bg: #1a1a1a;
-  --border: rgba(0,188,212,0.2);
-  --glow-1: rgba(0,188,212,0.4);
-  --glow-2: rgba(0,188,212,0.15);
-  --glow-3: rgba(0,188,212,0.12);
-  --glow-4: rgba(0,188,212,0.18);
-  --glow-5: rgba(0,188,212,0.5);
-  --glow-6: rgba(0,188,212,0.1);
-  --glow-7: rgba(0,188,212,0.05);
-  --glow-8: rgba(0,188,212,0.04);
-  --glow-9: rgba(0,188,212,0.3);
+  --accent: #00e5ff;
+  --accent-dark: #00b8d4;
+  --bg: #080c14;
+  --bg2: #0f1520;
+  --bg3: #161e2e;
+  --text: #eaf0fb;
+  --text-muted: #7a8ba8;
+  --card-bg: #111827;
+  --border: rgba(0,229,255,0.15);
+  --glow-1: rgba(0,229,255,0.45);
+  --glow-2: rgba(0,229,255,0.18);
+  --glow-3: rgba(0,229,255,0.12);
+  --glow-4: rgba(0,229,255,0.22);
+  --glow-5: rgba(0,229,255,0.55);
+  --glow-6: rgba(0,229,255,0.1);
+  --glow-7: rgba(0,229,255,0.06);
+  --glow-8: rgba(0,229,255,0.04);
+  --glow-9: rgba(0,229,255,0.28);
 }
 
 body.pink-theme {
-  --accent: #f06292; --accent-dark: #e91e8c;
-  --border: rgba(240,98,146,0.2);
-  --glow-1: rgba(240,98,146,0.4); --glow-2: rgba(240,98,146,0.15);
-  --glow-3: rgba(240,98,146,0.12); --glow-4: rgba(240,98,146,0.18);
-  --glow-5: rgba(240,98,146,0.5); --glow-6: rgba(240,98,146,0.1);
-  --glow-7: rgba(240,98,146,0.05); --glow-8: rgba(240,98,146,0.04);
-  --glow-9: rgba(240,98,146,0.3);
+  --accent: #ff4d8d; --accent-dark: #e91e63;
+  --border: rgba(255,77,141,0.18);
+  --glow-1: rgba(255,77,141,0.45); --glow-2: rgba(255,77,141,0.18);
+  --glow-3: rgba(255,77,141,0.12); --glow-4: rgba(255,77,141,0.22);
+  --glow-5: rgba(255,77,141,0.55); --glow-6: rgba(255,77,141,0.1);
+  --glow-7: rgba(255,77,141,0.06); --glow-8: rgba(255,77,141,0.04);
+  --glow-9: rgba(255,77,141,0.28);
 }
 
 body.light-mode {
-  --bg: #f8f9fa;
+  --bg: #f0f4ff;
   --bg2: #ffffff;
-  --bg3: #e9ecef;
-  --text: #212529;
-  --text-muted: #6c757d;
+  --bg3: #e2e8f8;
+  --text: #0f172a;
+  --text-muted: #4a5568;
   --card-bg: #ffffff;
-  --border: rgba(0, 188, 212, 0.2);
-  --glow-1: rgba(0, 188, 212, 0.25);
-  --glow-2: rgba(0, 188, 212, 0.1);
-  --glow-3: rgba(0, 188, 212, 0.08);
-  --glow-4: rgba(0, 188, 212, 0.12);
-  --glow-5: rgba(0, 188, 212, 0.3);
-  --glow-6: rgba(0, 188, 212, 0.08);
-  --glow-7: rgba(0, 188, 212, 0.04);
-  --glow-8: rgba(0, 188, 212, 0.03);
-  --glow-9: rgba(0, 188, 212, 0.2);
+  --border: rgba(0, 229, 255, 0.2);
+  --glow-1: rgba(0, 229, 255, 0.3);
+  --glow-2: rgba(0, 229, 255, 0.12);
+  --glow-3: rgba(0, 229, 255, 0.08);
+  --glow-4: rgba(0, 229, 255, 0.15);
+  --glow-5: rgba(0, 229, 255, 0.35);
+  --glow-6: rgba(0, 229, 255, 0.08);
+  --glow-7: rgba(0, 229, 255, 0.04);
+  --glow-8: rgba(0, 229, 255, 0.03);
+  --glow-9: rgba(0, 229, 255, 0.2);
 }
 
 body.light-mode.pink-theme {
@@ -77,7 +77,7 @@ html { font-size: 62.5%; scroll-behavior: smooth; }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, var(--bg) 0%, #1a1a2e 100%);
+  background: linear-gradient(135deg, var(--bg) 0%, #0a1628 100%);
   color: var(--text);
   overflow-x: hidden;
   transition: background 0.3s, color 0.3s;
@@ -85,22 +85,17 @@ body {
 }
 
 body.light-mode {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #f0f4ff 0%, #dde8ff 100%);
 }
 
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at 20% 50%, rgba(0, 188, 212, 0.03) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(0, 188, 212, 0.03) 0%, transparent 50%);
+  background: radial-gradient(circle at 15% 40%, rgba(0,229,255,0.05) 0%, transparent 50%),
+              radial-gradient(circle at 85% 75%, rgba(0,229,255,0.04) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
-}
-
-body.light-mode::before {
-  background: radial-gradient(circle at 20% 50%, rgba(0, 188, 212, 0.05) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(0, 188, 212, 0.05) 0%, transparent 50%);
 }
 
 section { 
